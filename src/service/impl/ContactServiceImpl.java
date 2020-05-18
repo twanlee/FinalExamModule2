@@ -14,8 +14,8 @@ public class ContactServiceImpl implements IContactService {
     }
 
     @Override
-    public String disPlaySingleContact(List<Contact> list, String numberPhoneOrName) {
-       return findCorrectly(list,numberPhoneOrName).displayInfo();
+    public void disPlaySingleContact(List<Contact> list, String numberPhoneOrName) {
+        System.out.println(findCorrectly(list,numberPhoneOrName).displayInfo());
 
     }
 
@@ -43,10 +43,10 @@ public class ContactServiceImpl implements IContactService {
     }
 
     @Override
-    public List<Contact> find(List<Contact> list, String numberPhoneOrName) {
-        List<Contact> newList = new ArrayList<>();
+    public ArrayList<Contact> find(List<Contact> list, String numberPhoneOrName) {
+        ArrayList<Contact> newList = new ArrayList<>();
         for (Contact contact : list){
-            if(numberPhoneOrName.contains(contact.getNumberPhone()) || numberPhoneOrName.contains(contact.getFullName())){
+            if(contact.getNumberPhone().contains(numberPhoneOrName) || contact.getFullName().contains(numberPhoneOrName)){
                 newList.add(contact);
             }
         }return newList;
@@ -77,17 +77,16 @@ public class ContactServiceImpl implements IContactService {
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getNumberPhone().equalsIgnoreCase(numberPhone)) {
                 index = i;
-                break;
             }
         }
         if(index!=-1){
-            if(findCorrectly(list,contact.getNumberPhone())==null){
+
                 list.get(index).setFullName(contact.getAddress());
                 list.get(index).setGender(contact.getGender());
                 list.get(index).setGroup(contact.getGroup());;
                 list.get(index).setMail(contact.getMail());
                 list.get(index).setAddress(contact.getAddress());
-            }
+
         }
     }
 }

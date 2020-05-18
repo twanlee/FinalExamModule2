@@ -12,7 +12,7 @@ public class ContactController {
             contactService.displayAll(list);
         }
         public void disPlaySingleContact(List<Contact> list, String numberPhoneOrName){
-            System.out.println(contactService.disPlaySingleContact(list,numberPhoneOrName));
+            contactService.disPlaySingleContact(list,numberPhoneOrName);
         }
         public void sort(List<Contact> list, IComparator iComparator){
             contactService.sort(list,iComparator);

@@ -71,7 +71,7 @@ public class Client {
                     System.out.println("Nhập số điện thoại hoặc tên");
                     scanner.nextLine();
                     String numberOrName = scanner.nextLine();
-                    contactController.disPlaySingleContact(myList,numberOrName);
+                    contactController.displayAll(contactController.find(myList,numberOrName));
                     break;
                 case 6:
                     contactRepository.load(myList);
@@ -96,9 +96,10 @@ public class Client {
 
     private Contact addNewContact() {
         System.out.println("Nhập số điện thoại");
-        scanner.nextLine();
-        String number = scanner.nextLine();
+//        scanner.nextLine();
+        String number = scanner.next();
         System.out.println("Nhập tên");
+        scanner.nextLine();
         String name = scanner.nextLine();
         System.out.println("Nhập nhóm");
         String group = scanner.nextLine();
